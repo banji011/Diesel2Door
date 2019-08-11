@@ -1,0 +1,30 @@
+{% extends 'diesel/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+<section id="contact" class="padd-section wow fadeInUp">
+
+    <div class="container">
+<div class="row justify-content-center">
+    
+  <div class="col-lg-5 col-md-8">
+        <div>
+          <h5>Your order has been placed successfully 
+              We have sent further instructions to your email. Please check your email to complete 
+        </h5>
+
+        <div class="text-center"> <a href=" {% url 'homepage' %} ">  <button type="submit"> Go Home </button> </a></div>
+         
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+
+
+
+
+{% endblock %}

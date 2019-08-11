@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  {% if title %}
+  <title>Crestfield - {{ title }}</title>
+{% else %}
+  <title>Crestfield </title>
+{% endif %}
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+ 
+  <link href="{% static 'diesel/img/favicon.png' %} " rel="icon">
+  <link href=" {% static 'diesel/img/apple-touch-icon.png' %} " rel="apple-touch-icon">
+
+ 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
+
+  
+  <link href=" {% static 'diesel/lib/bootstrap/css/bootstrap.min.css' %} " rel="stylesheet">
+
+  
+  <link href=" {% static 'diesel/lib/owlcarousel/assets/owl.carousel.min.css' %} " rel="stylesheet">
+  <link href=" {% static 'diesel/lib/owlcarousel/assets/owl.theme.default.min.css' %} " rel="stylesheet">
+  <link href=" {% static 'diesel/lib/font-awesome/css/font-awesome.min.css' %} " rel="stylesheet">
+  <link href=" {% static 'diesel/lib/animate/animate.min.css' %} " rel="stylesheet">
+  <link href=" {%  static 'diesel/lib/modal-video/css/modal-video.min.css' %} " rel="stylesheet">
+
+
+  <link href=" {% static 'diesel/css/style.css' %} " rel="stylesheet">
+
+  
+</head>
+
+<body>
+
+  <header id="header" class="header header-hide">
+    <div class="container">
+
+      <div id="logo" class="pull-left">
+        
+        <a href="#body"><img src=" {% static 'diesel/img/logo.png' %} " alt="" title="" /></a>
+      </div>
+
+      <nav id="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="{% url 'homepage' %}">Home</a></li>
+          
+          {% if user.is_authenticated %}
+          <li class="menu-active"><a href=" {% url 'logout' %} "> Logout </a></li>
+          <li class="menu-active"><a href="#">  <i class="fa fa-user-o fa-1x" ></i> Welcome {{user.username}} </a></li>
+          {% else %}
+          
+          <li class="menu-active"><a href=" {% url 'register' %} ">  Sign Up </a></li>
+          <li class="menu-active"><a href=" {% url 'login' %} ">  <i class="fa fa-sign-in fa-1x" ></i></a></li>
+          {% endif %}
+          
+
+          
+          
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <section class="padd-section wow fadeInUp">
+        <div class="container ">
+          <h1> Account Overview </h1>
+          <p> Welcome {{user.username}} to your account page </p>
+        </div>
+    
+        <div class="container">
+          <h3> ORDER HISTORY </h3>
+          <div class="table-responsive">
+            <table
+              class="table table-bordered"
+              id="dataTable"
+              width="100%"
+              cellspacing="0"
+            >
+              <thead>
+                
+                <tr>
+                        <th>Receipient </th>
+                        <th> Date </th>
+                        
+                        <th>Status</th>
+                  
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Receipient </th>
+                  <th> Date </th>
+                  
+                  <th>Status</th>
+                  
+                </tr>
+              </tfoot>
+             
+              <tbody>
+                <tr>
+                    {% for od in orders %}
+                  <td> {{od.recipient_name}} </td>
+                  <td> {{od.order_date}} </td>
+                  {% if od.completed %}
+                  <td> Completed </td>
+                  {% else %}
+                  <td>Not Completed </td>
+                  {% endif %}
+                  {% endfor %}
+                </tr>
+               
+              </tbody>
+            </table>
+          </div>
+        </div>
+    
+      </section>
+  
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-12 col-lg-4">
+          <div class="footer-logo">
+
+                <a href="#body"><img src=" {%  static 'diesel/img/logo.png' %} " alt="" title="" /></a>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the.</p>
+
+          </div>
+        </div>
+
+        
+
+        
+
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <div class="list-menu">
+
+            <h4>Support</h4>
+
+            <ul class="list-unstyled">
+              <li><a href="#">faq</a></li>
+              <li><a href="#">Editor help</a></li>
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 col-lg-2">
+          <div class="list-menu">
+
+            <h4>Socials </h4>
+
+            <ul class="list-unstyled">
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Features item</a></li>
+              <li><a href="#">Live streaming</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="copyrights">
+      <div class="container">
+        <p>&copy; Copyrights Crestfield Energy. All rights reserved.</p>
+        
+      </div>
+    </div>
+
+  </footer>
+
+
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src=" {% static 'diesel/lib/jquery/jquery.min.js' %} "></script>
+  <script src="{% static 'diesel/lib/jquery/jquery-migrate.min.js' %} "></script>
+  <script src=" {% static 'diesel/lib/bootstrap/js/bootstrap.bundle.min.js' %} "></script>
+  <script src=" {% static 'diesel/lib/superfish/hoverIntent.js' %} "></script>
+  <script src=" {% static 'diesel/lib/superfish/superfish.min.js' %} "></script>
+  <script src=" {% static 'diesel/lib/easing/easing.min.js' %} "></script>
+  <script src=" {% static 'diesel/lib/modal-video/js/modal-video.js' %} "></script>
+  <script src=" {% static 'diesel/lib/owlcarousel/owl.carousel.min.js' %} "></script>
+  <script src=" {% static 'diesel/lib/wow/wow.min.js' %} "></script>
+  <!-- Contact Form JavaScript File -->
+  <script src=" {% static 'diesel/contactform/contactform.js' %} "></script>
+
+  <!-- Template Main Javascript File -->
+  <script src=" {% static 'diesel/js/main.js' %} "></script>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+{% extends "diesel/base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+  <section id="hero" class="wow fadeIn">
+    <div class="hero-container">
+      <h1>Diesel At Your Door Step </h1>
+      <p>Diesel2Door is your quick, flexible and convenient way to order <br>
+        and pay for automotive gas oil (AGO). We offer quality diesel at <br>
+        competitive rates, delivered to your door step, within 24 - 36
+        hours.</p>
+        <h3> Service currently available in Ikoyi, VI, Lekki & Ajah. </h3>
+      <!-- <img src="img/hero-img.png" alt="Hero Imgs"> -->
+      <a href=" {% url 'order'  %} " class="btn-get-started scrollto">Order Now </a>
+      
+    </div>
+  </section><!-- #hero -->
+
+  <!--==========================
+    Get Started Section
+  ============================-->
+  <section id="get-started" class="padd-section text-center wow fadeInUp">
+
+    <div class="container">
+      <div class="section-title text-center">
+
+        <h2>simple systeme fordiscount </h2>
+        <p class="separator">Integer cursus bibendum augue ac cursus .</p>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-block">
+
+            <img src="{% static 'diesel/img/svg/cloud.svg' %} " alt="img" class="img-fluid">
+            <h4>introducing whatsapp</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <a href="#">read more</a>
+
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-block">
+
+            <img src=" {% static 'diesel/img/svg/planet.svg' %} " alt="img" class="img-fluid">
+            <h4>user friendly interface</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <a href="#">read more</a>
+
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-block">
+
+            <img src=" {% static 'diesel/img/svg/asteroid.svg' %} " alt="img" class="img-fluid">
+            <h4>build the app everyone love</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <a href="#">read more</a>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!--==========================
+    About Us Section
+  ============================-->
+  
+
+ 
+
+ 
+
+  
+
+ 
+
+ 
+
+ 
+
+  <!--==========================
+    Newsletter Section
+  ============================-->
+  <section id="newsletter" class="newsletter text-center wow fadeInUp">
+    <div class="overlay padd-section">
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <div class="col-md-9 col-lg-6">
+              <form class="form-inline" method="POST" action="">
+                  {% csrf_token %}
+                  {{ newsform.email }}
+                  
+                  <button type="submit" class="btn btn-default"><i class="fa fa-location-arrow"></i>Subscribe</button>
+    
+                </form>
+
+          </div>
+        </div>
+
+          <ul class="list-unstyled">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!--==========================
+    Contact Section
+  ============================-->
+  <section id="contact" class="padd-section wow fadeInUp">
+
+    <div class="container">
+      <div class="section-title text-center">
+        <h2>Contact</h2>
+        <p class="separator">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+
+        <div class="col-lg-3 col-md-4">
+
+          <div class="info">
+            <div>
+              <i class="fa fa-map-marker"></i>
+              <p>Flat C4, Victoria Crest Estate<br> Lekki, Lagos State</p>
+            </div>
+
+            <div class="email">
+              <i class="fa fa-envelope"></i>
+              <p>info@crestfieldenergy.com</p>
+            </div>
+
+            <div>
+              <i class="fa fa-phone"></i>
+              <p>+2347055555045</p>
+            </div>
+          </div>
+
+          
+
+        </div>
+
+        <div class="col-lg-5 col-md-8">
+          <div class="form">
+            <div id="sendmessage">Your message has been sent. Thank you!</div>
+            <div id="errormessage"></div>
+            <form class="form-inline" method="POST" action="">
+                {% csrf_token %}
+                <form action="" method="post" role="form">
+                    <div class="form-group">
+                      {{ contactform.name }}
+                      <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        {{ contactform.email }}
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        {{ contactform.subject }}
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        {{ contactform.message }}
+                        <div class="validation"></div>
+                    </div>
+                    <div class="text-center"><button type="submit">Send Message</button></div>
+                  </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- #contact -->
+ {% endblock %}

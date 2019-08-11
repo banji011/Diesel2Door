@@ -1,0 +1,8 @@
+*.pyc
+*.png
+*.PNG
+*.jpg
+*.JPG
+*.svg
+/venv
+*.vscode
